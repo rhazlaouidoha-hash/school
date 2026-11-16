@@ -71,10 +71,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    public function edit(Student $student)
+{
+    return view('edit', compact('student'));
+}
 
     /**
      * Update the specified resource in storage.
@@ -94,8 +94,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+   public function destroy(Student $student)
+{
+    $student->delete();
+    return redirect('/students');
+}
 }

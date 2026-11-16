@@ -35,8 +35,13 @@
             <a class="btn btn-primary" href="{{ route('students.edit', $student->id) }}"> Edit </a>
         </td>
         <td>
-            <a class="btn btn-danger" href="{{ route('students.destroy', $student->id) }}"> Delete </a>
-        </td>
+    <form method="POST" action="{{ route('students.destroy', $student->id) }}"
+          onsubmit="return confirm('Supprimer cet étudiant ?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger"> Delete </button>
+    </form>
+</td>
     </tr>
     @endforeach
 </tbody>
